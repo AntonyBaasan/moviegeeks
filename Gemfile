@@ -54,3 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :test do
   gem 'capybara', '~> 2.5'
 end
+
+gem 'bootstrap-sass'
