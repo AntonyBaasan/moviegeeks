@@ -52,7 +52,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
 
-  gem 'guard-rspec', '~> 4.7'
+  gem 'guard-rspec', "~> 4.7"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
