@@ -41,6 +41,8 @@ group :development, :test do
   gem 'rspec-rails', '= 3.5.0.beta3'
 
   gem 'factory_girl_rails', '~> 4.5'
+
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -70,3 +72,5 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 
 gem 'coveralls', require: false
+
+gem 'redcarpet', '~> 3.3.4'

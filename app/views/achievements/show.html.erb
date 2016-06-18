@@ -1,4 +1,8 @@
+<% if flash[:notice] %>
+    <div class="alert alert-info"><%= flash[:notice] %></div>
+<% end %>
+
 <%= @achievement.title %><br/>
 <div>
-  <%= @achievement.description %>
+  <%= @achievement.description_html.html_safe %>
 </div>
