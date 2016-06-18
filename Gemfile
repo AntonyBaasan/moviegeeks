@@ -74,3 +74,5 @@ gem 'simple_form'
 gem 'coveralls', require: false
 
 gem 'redcarpet', '~> 3.3.4'
+
+gem 'devise'
