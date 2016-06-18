@@ -1,0 +1,8 @@
+<%= simple_form_for @achievement do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :privacy, collection: Hash[Achievement.privacies.map{|key, value| [key.split('_').first.capitalize, key]}] %>
+    <%= f.input :featured, label: 'Featured achievement' %>
+    <%= f.input :cover_image, as: :file, label: "Cover Image" %>
+    <%= f.submit "Create Achievement", class: 'btn btn-primary' %>
+<% end %>
