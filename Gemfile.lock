@@ -54,6 +54,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    code_analyzer (0.4.5)
+      sexp_processor
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -159,6 +161,14 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_best_practices (1.16.0)
+      activesupport
+      code_analyzer (>= 0.4.3)
+      erubis
+      i18n
+      json
+      require_all
+      ruby-progressbar
     railties (5.0.0.rc1)
       actionpack (= 5.0.0.rc1)
       activesupport (= 5.0.0.rc1)
@@ -169,6 +179,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    require_all (1.3.3)
     rspec (3.5.0.beta3)
       rspec-core (= 3.5.0.beta3)
       rspec-expectations (= 3.5.0.beta3)
@@ -190,6 +201,7 @@ GEM
       rspec-mocks (= 3.5.0.beta3)
       rspec-support (= 3.5.0.beta3)
     rspec-support (3.5.0.beta3)
+    ruby-progressbar (1.8.1)
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -197,6 +209,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sexp_processor (4.7.0)
     shellany (0.0.1)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
@@ -260,6 +273,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (>= 5.0.0.rc1, < 5.1)
+  rails_best_practices
   rspec (= 3.5.0.beta3)
   rspec-core (= 3.5.0.beta3)
   rspec-expectations (= 3.5.0.beta3)
