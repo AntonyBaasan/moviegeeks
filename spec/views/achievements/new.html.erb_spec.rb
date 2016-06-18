@@ -22,6 +22,19 @@ feature 'Create new achievement' do
 
   end
 
+  scenario 'create new achievement with valid description' do
+
+    new_achievement_form.visit_page.fill_in_with(
+        title: 'Read a book',
+        description: 'Description'
+    ).submit
+
+    expect(page).to have_content('Achievement has been created')
+    expect(Achievement.last.description).to eq('Description')
+
+  end
+
+
   scenario 'create new achievement with valid data' do
     new_achievement_form.visit_page.submit
     expect(page).to have_content('can\'t be blank')

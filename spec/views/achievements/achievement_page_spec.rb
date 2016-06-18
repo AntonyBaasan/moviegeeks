@@ -4,11 +4,24 @@ feature 'achievement page' do
 
   scenario 'achievement public page' do
 
-    achievement = Achievement.create({title: 'Just do it'});
-
+    achievement = FactoryGirl.create(:achievement, title: 'Just do it');
     visit("/achievements/#{achievement.id}")
-
     expect(page).to have_content('Just do it')
 
+    # achievements = FactoryGirl.create_list(:achievement, 5)
+    # p achievements
+
   end
+
+  scenario 'achievement description display' do
+
+    achievement = FactoryGirl.create(:achievement, description: 'This *was* hard');
+    visit("/achievements/#{achievement.id}")
+
+    p "page: " + page.body
+
+    expect(page).to have_content('This <i>was<i> hard')
+
+  end
+
 end
