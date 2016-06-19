@@ -1,17 +1,20 @@
 require 'rails_helper'
-
-# RSpec.describe "achievements/new.html.erb", type: :view do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
-
 require_relative '../../support/new_achievement_form'
+require_relative '../../support/login_form'
 
 feature 'Create new achievement' do
 
   # page object pattern
   let(:new_achievement_form) { NewAchievementForm.new }
+  let(:login_form) { LoginForm.new }
+  let(:user) { FactoryGirl.create(:user) }
+
+  before do
+    login_form.visit_page.login_as(user)
+  end
 
   scenario 'create new achievement with valid data' do
+
 
     new_achievement_form.visit_page.fill_in_with(
         title: 'Read a book'
@@ -34,8 +37,8 @@ feature 'Create new achievement' do
 
   end
 
-
   scenario 'create new achievement with valid data' do
+
     new_achievement_form.visit_page.submit
     expect(page).to have_content('can\'t be blank')
   end
