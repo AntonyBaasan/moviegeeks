@@ -65,6 +65,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
   gem 'capybara', '~> 2.5'
+
+  gem 'shoulda-matchers', require: false
 end
 
 gem 'bootstrap-sass'

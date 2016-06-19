@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :achievement do
-    # title "Title"
     sequence(:title) { |n| "Achievement #{n}" }
     description "Description"
     featured false
