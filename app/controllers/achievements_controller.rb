@@ -36,6 +36,7 @@ class AchievementsController < ApplicationController
 
   def create
     @achievement = Achievement.new(achievement_params)
+    @achievement.user = current_user
     if @achievement.save
       redirect_to achievement_path(@achievement), notice: 'Achievement has been created'
     else
@@ -46,7 +47,7 @@ class AchievementsController < ApplicationController
   private
 
   def achievement_params
-    params.require(:achievement).permit(:title, :description, :privacy, :featured, :cover_imaage)
+    params.require(:achievement).permit(:title, :description, :privacy, :featured, :cover_image)
   end
 
   def owners_only

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AchievementsController, type: :controller do
 
-  shared_examples "public access to achievements" do
+  shared_examples 'public access to achievements' do
 
     describe 'GET #index' do
       it 'returns http success' do
@@ -47,7 +47,7 @@ RSpec.describe AchievementsController, type: :controller do
 
   describe 'Guest user' do
 
-    it_behaves_like "public access to achievements"
+    it_behaves_like 'public access to achievements'
 
     describe 'GET #new' do
       it 'redirect to login page' do
@@ -91,7 +91,7 @@ RSpec.describe AchievementsController, type: :controller do
       sign_in(user)
     end
 
-    it_behaves_like "public access to achievements"
+    it_behaves_like 'public access to achievements'
 
     describe 'GET #new' do
       it 'returns http success' do
@@ -111,18 +111,20 @@ RSpec.describe AchievementsController, type: :controller do
     end
 
     describe 'POST #create' do
+      let(:valid_data) { FactoryGirl.attributes_for(:public_achievement) }
       context 'valid data' do
-        # creates hash of attributes and values
-        let(:achievement_hash) { FactoryGirl.attributes_for(:achievement) }
 
-        it 'redirects to achievements#show view' do
-          post :create, params: {achievement: achievement_hash}
-          expect(response).to redirect_to(achievement_path(assigns(:achievement)))
+        # creates hash of attributes and values
+        it 'redirects to achievements#show' do
+
+          post :create, params: {achievement: valid_data}
+          expect(response).to redirect_to(achievement_path(assigns[:achievement]))
         end
 
-        it 'creates new achievements in db' do
+        it 'creates new achievement in database' do
           expect {
-            post :create, params: {achievement: achievement_hash}
+            valid_data.store(:user, user)
+            post :create, params: {achievement: valid_data}
           }.to change(Achievement, :count).by(1)
         end
       end
@@ -145,7 +147,7 @@ RSpec.describe AchievementsController, type: :controller do
 
     end
 
-    context "is not the owner of the achievement" do
+    context 'is not the owner of the achievement' do
 
       describe 'GET #edit' do
         let(:achievement_hash) { FactoryGirl.attributes_for(:achievement) }
@@ -175,7 +177,7 @@ RSpec.describe AchievementsController, type: :controller do
 
     end
 
-    context "is the owner of the achievement" do
+    context 'is the owner of the achievement' do
 
       let(:achievement) { FactoryGirl.create(:public_achievement, user: user) }
 

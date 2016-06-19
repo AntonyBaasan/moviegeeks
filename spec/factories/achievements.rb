@@ -5,6 +5,7 @@ FactoryGirl.define do
     featured false
     cover_image "MyString"
 
+    user
 
     factory :public_achievement do
       privacy :public_access
