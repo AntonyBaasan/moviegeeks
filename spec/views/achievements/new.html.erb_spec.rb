@@ -11,10 +11,15 @@ feature 'Create new achievement' do
 
   before do
     login_form.visit_page.login_as(user)
+
+    # clear ActionMailer
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.deliveries = []
+
   end
 
   scenario 'create new achievement with valid data' do
-
 
     new_achievement_form.visit_page.fill_in_with(
         title: 'Read a book'
@@ -22,6 +27,30 @@ feature 'Create new achievement' do
 
     expect(page).to have_content('Achievement has been created')
     expect(Achievement.last.title).to eq('Read a book')
+
+  end
+
+  scenario 'uploads image of the achievement' do
+
+    new_achievement_form.visit_page.fill_in_with(
+        title: 'Read a book',
+        cover_image: 'cover_image.jpg'
+
+    ).submit
+
+    # 'cover_image_identifier' distributer from Carriwave
+    # p 'Achievement.last.cover_image.current_path: ' + Achievement.last.cover_image.current_path
+    expect(Achievement.last.cover_image_identifier).to eq('cover_image.jpg')
+  end
+
+  scenario 'sends email after achievement create' do
+
+    new_achievement_form.visit_page.fill_in_with(
+        title: 'Read a book'
+    ).submit
+
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
+    expect(ActionMailer::Base.deliveries.last.to).to include(user.email)
 
   end
 

@@ -54,9 +54,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
 
-  gem 'guard-rspec', "~> 4.7"
+  gem 'guard-rspec', '~> 4.7'
 
-  gem "rails_best_practices"
+  gem 'rails_best_practices'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -78,3 +78,5 @@ gem 'coveralls', require: false
 gem 'redcarpet', '~> 3.3.4'
 
 gem 'devise'
+
+gem 'carrierwave'

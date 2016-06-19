@@ -1,5 +1,6 @@
 class Achievement < ApplicationRecord
   belongs_to :user
+  has_many :encouragements, foreign_key: 'achievement_id'
 
   validates :title, presence: true
   validates :user, presence: true
@@ -13,6 +14,8 @@ class Achievement < ApplicationRecord
   }
 
   enum privacy: [:public_access, :private_access, :friends_access]
+
+  mount_uploader :cover_image, CoverImageUploader
 
   def description_html
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(description)

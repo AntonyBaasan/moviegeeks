@@ -38,6 +38,8 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.new(achievement_params)
     @achievement.user = current_user
     if @achievement.save
+      # TODO: move to model
+      UserMailer.achievement_created(current_user.email, @achievement.id).deliver_now
       redirect_to achievement_path(@achievement), notice: 'Achievement has been created'
     else
       render :new

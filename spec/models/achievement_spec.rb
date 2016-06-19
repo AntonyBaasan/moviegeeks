@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Achievement, type: :model do
   describe 'validations' do
 
+    it { should have_many(:encouragements).with_foreign_key('achievement_id') }
+
     it { should validate_presence_of(:title) }
     # it 'requires title' do
     #   achievement = Achievement.new(title: '')
